@@ -1,0 +1,134 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+<!--   
+	<bean id="helloWorld" class="com.pea.tutorial.HelloWorld"
+      init-method="init" 
+      destroy-method="destroy">
+      <property name="message1" value="Hello World!"/>
+      <property name="message2" value="Hello Second World!"/>
+   </bean>
+-->   
+   <!-- example of implementing BeanPostProcessor -->
+<!-- 
+   <bean class="com.pea.tutorial.InitHelloWorld" />
+-->
+   
+   <!-- example of inheritance and template  -->
+   <bean id="beanTeamplate" abstract="true">
+      <property name="message1" value="Hello World!"/>
+      <property name="message2" value="Hello Second World too!"/>
+      <property name="message3" value="Namaste India!"/>
+   </bean>
+   <bean id="helloIndia" class="com.pea.tutorial.HelloIndia" parent="beanTeamplate">
+      <property name="message1" value="Hello India!"/>
+      <property name="message3" value="Namaste India!"/>
+   </bean>
+  
+   <!-- dependencyinjection.constructorbased -->
+   <!-- Definition for textEditor bean -->
+   <bean id="textEditor" class="com.pea.dependencyinjection.constructorbased.TextEditor">
+      <constructor-arg ref="spellChecker"/>
+   </bean>
+   <!-- Definition for spellChecker bean -->
+   <bean id="spellChecker" class="com.pea.dependencyinjection.constructorbased.SpellChecker"></bean>
+   
+   <!-- dependencyinjection.setterbased -->
+   <!-- Definition for textEditor bean -->
+   <bean id="textEditor2" class="com.pea.dependencyinjection.setterbased.TextEditor">
+      <property name="spellChecker" ref="spellChecker2"/>
+   </bean>
+   <!-- Definition for spellChecker bean -->
+   <bean id="spellChecker2" class="com.pea.dependencyinjection.setterbased.SpellChecker"></bean>
+   
+   
+   <!-- Definition for textEditor bean using inner bean -->
+   <bean id="textEditor3" class="com.pea.innerbeans.TextEditor">
+      <property name="spellChecker">
+         <bean id="spellChecker3" class="com.pea.innerbeans.SpellChecker"/>
+      </property>
+   </bean>
+   
+   <!--
+   output (without calling these beans): 
+Inside SpellChecker constructor.
+Inside TextEditor constructor.
+Inside SpellChecker 2 constructor.
+Inside setSpellChecker 2.
+Inside SpellChecker 3 constructor.
+Inside setSpellChecker 3.
+    -->
+    
+    <!-- autowiring.byname -->
+    <!-- Definition for textEditor bean -->
+   <bean id = "textEditor4" class = "com.pea.autowiring.byname.TextEditor" 
+   		autowire = "byName">
+      <property name = "name" value = "Generic Text Editor" />
+   </bean>
+   <!-- Definition for spellChecker bean -->
+   <bean id = "spellCheckerByName4" class = "com.pea.autowiring.byname.SpellChecker"></bean>
+   
+   <!-- autowiring.bytype -->
+    <!-- Definition for textEditor bean -->
+   <bean id = "textEditor5" class = "com.pea.autowiring.bytype.TextEditor" 
+   		autowire = "byType">
+      <property name = "name" value = "Generic Text Editor" />
+   </bean>
+   <!-- Definition for spellChecker bean -->
+   <bean id = "spellChecker5" class = "com.pea.autowiring.bytype.SpellCheckerByType5"></bean>
+    
+   <!-- autowiring.byconstructor -->
+    <!-- Definition for textEditor bean -->
+   <bean id = "textEditor6" class = "com.pea.autowiring.byconstructor.TextEditor" 
+   		autowire = "constructor">
+      <constructor-arg value = "Generic Text Editor"/>
+   </bean>
+   <!-- Definition for spellChecker bean -->
+   <bean id = "spellChecker6" class = "com.pea.autowiring.byconstructor.SpellCheckerByConstructor6"></bean>
+     
+   
+   <!-- Definition for javaCollection -->
+   <bean id = "javaCollection" class = "com.pea.collections.JavaCollection">
+      <!-- results in a setAddressList(java.util.List) call -->
+      <property name = "addressList">
+         <list>
+            <value>INDIA</value>
+            <value>Pakistan</value>
+            <value>USA</value>
+            <value>USA</value>
+         </list>
+      </property>
+      <!-- results in a setAddressSet(java.util.Set) call -->
+      <property name = "addressSet">
+         <set>
+            <value>INDIA</value>
+            <value>Pakistan</value>
+            <value>USA</value>
+            <value>USA</value>
+         </set>
+      </property>
+      <!-- results in a setAddressMap(java.util.Map) call -->
+      <property name = "addressMap">
+         <map>
+            <entry key = "1" value = "INDIA"/>
+            <entry key = "2" value = "Pakistan"/>
+            <entry key = "3" value = "USA"/>
+            <entry key = "4" value = "USA"/>
+         </map>
+      </property>      
+      <!-- results in a setAddressProp(java.util.Properties) call -->
+      <property name = "addressProp">
+         <props>
+            <prop key = "one">INDIA</prop>
+            <prop key = "one">INDIA</prop>
+            <prop key = "two">Pakistan</prop>
+            <prop key = "three">USA</prop>
+            <prop key = "four">USA</prop>
+         </props>
+      </property>
+   </bean>
+</beans>
