@@ -31,7 +31,7 @@ public class LambdaFunctionalInterface {
 
 		greetService1.sayMessage("Mahesh");
 		greetService2.sayMessage("Suresh");
-	}
+ 	}
 
 	interface MathOperation {
 		int operation(int a, int b);

@@ -3,7 +3,7 @@ package com.pea.java8;
 /**
  * Using lambda expression, you can refer to final variable or effectively final variable 
  * (which is assigned only once). Lambda expression throws a compilation error, 
- * if a variable is assigned a value the second time.
+ * if a variable is assigned a value the second time. 
  */
 public class LambdaFinalVariable {
 	   final static String salutation = "Hello! ";

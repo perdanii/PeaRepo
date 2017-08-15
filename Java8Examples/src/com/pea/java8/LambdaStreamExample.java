@@ -20,7 +20,7 @@ public class LambdaStreamExample {
 		getRabatt();
 		try { case1(); }catch(RuntimeException e){}
 		try { case2(); }catch(RuntimeException e){}
-		try { case3(); }catch(RuntimeException e){}
+		try { case3(); }catch(RuntimeException e){} 
 	}
 
 	public static void getRabatt() {
