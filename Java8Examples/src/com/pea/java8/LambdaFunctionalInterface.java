@@ -1,5 +1,17 @@
 package com.pea.java8;
 
+/**
+ * https://www.tutorialspoint.com/java8/java8_lambda_expressions.htm
+ *
+ * Lambda expressions are used primarily to define inline implementation of a 
+ * functional interface, i.e., an interface with a single method only. In the 
+ * example below, we've used various types of lambda expressions to define the 
+ * operation method of MathOperation interface. Then we have defined the 
+ * implementation of sayMessage of GreetingService.
+ * 
+ * Lambda expression eliminates the need of anonymous class and gives a very 
+ * simple yet powerful functional programming capability to Java.
+ */
 public class LambdaFunctionalInterface {
 	public static void main(String args[]) {
 		LambdaFunctionalInterface tester = new LambdaFunctionalInterface();

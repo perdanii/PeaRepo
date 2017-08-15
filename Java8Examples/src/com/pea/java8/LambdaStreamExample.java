@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
+ * https://www.heise.de/developer/artikel/Streams-und-Collections-in-Java-8-2151376.html
+ * 
  * Following are the important points to be considered in the above example.
  * - Lambda expressions are used primarily to define inline implementation of 
  * a functional interface, i.e., an interface with a single method only. 
